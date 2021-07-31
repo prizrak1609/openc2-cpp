@@ -7,16 +7,15 @@ include(${CMAKE_BINARY_DIR}/conan-dependencies/conan_paths.cmake)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(json-dto REQUIRED)
-find_package(RapidJSON REQUIRED)
+find_package(jsonformoderncpp REQUIRED)
 
-include_directories(${json-dto_INCLUDES}
-    ${RapidJSON_INCLUDES}
+include_directories(${jsonformoderncpp_INCLUDES}
     inc/actuators
     inc/args
     inc/interfaces
     inc/json
     inc/utilities
+    inc/targets
     inc
     )
 
@@ -28,4 +27,5 @@ add_library(OpenC2cpp STATIC
             src/interfaces/validation.cpp
             src/json/jsonformatter.cpp
             src/utilities/payload.cpp
+            src/targets/artifact.cpp
             )

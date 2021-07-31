@@ -1,15 +1,14 @@
 #pragma once
 
 #include <string>
-#include <json_dto/pub.hpp>
 #include <chrono>
 
 #include "ArgsResponseType.h"
+#include "Json.h"
 
 namespace OC {
 
-    struct Args
-    {
+    struct Args {
             std::time_t startTime = -1L;
             std::time_t stopTime = -1L;
             std::time_t duration = -1L;
@@ -23,16 +22,11 @@ namespace OC {
             void addDuration(std::time_t duration);
     };
 
-}
+    namespace JSON {
+        template<>
+        std::string toJson(const Args& item);
 
-namespace json_dto {
-
-    template<typename Json_Io>
-    void json_io(Json_Io &io, OC::Args &args) {
-        io & json_dto::optional("start_time", args.startTime, -1L)
-                & json_dto::optional("stop_time", args.stopTime, -1L)
-                & json_dto::optional("duration", args.duration, -1L)
-                & json_dto::optional("response_requested", args.responseRequested, ArgsResponseType.COMPLETE);
+        template<>
+        Args fromJson(std::string json);
     }
-
 }

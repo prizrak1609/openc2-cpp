@@ -19,7 +19,7 @@ namespace OC {
               * @param json OpenC2Message JSON string
               * @return OpenC2Message OpenC2Message object represented by the JSON string
               */
-            static OpenC2Message readOpenC2Message(const std::string &json, bool& error);
+            static OpenC2Message readOpenC2Message(const std::string &json);
             /**
               * Convert an OpenC2Message object to a JSON string
               *
@@ -27,14 +27,14 @@ namespace OC {
               * @param prettyPrint boolean to toggle if the return string is in human readable or not
               * @return String containing the JSON representation of the OpenC2Message object
               */
-            static std::string getJson(const OpenC2Message& message, bool prettyPrint, bool& error);
+            static std::string getJson(const OpenC2Message& message, bool prettyPrint);
             /**
               * Read a OpenC2 JSON string and convert it into a OpenC2Response object
               *
               * @param json response JSON string
               * @return OpenC2Response object
               */
-            static OpenC2Response readOpenC2Response(const std::string &json, bool& error);
+            static OpenC2Response readOpenC2Response(const std::string &json);
             /**
               * Convert an OpenC2Response object to a JSON string
               *
@@ -42,7 +42,7 @@ namespace OC {
               * @param prettyPrint boolean to toggle if the return string is in human readable or not
               * @return String containing the JSON representation of the object
               */
-            static std::string getJson(OpenC2Response message, bool prettyPrint, bool& error);
+            static std::string getJson(OpenC2Response message, bool prettyPrint);
     };
 
 }

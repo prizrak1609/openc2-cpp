@@ -1,5 +1,5 @@
 [requires]
-json_dto/0.2.13
+jsonformoderncpp/3.7.0
 
 [generators]
 cmake_find_package

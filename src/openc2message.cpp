@@ -1,22 +1,26 @@
 #include "openc2message.h"
 
+using namespace OC;
 
-OC::OpenC2Message& OC::OpenC2Message::setAction(std::string_view action)
+template<>
+std::string OC::JSON::toJson<>(const OpenC2Message& item)
 {
-    this->action = action;
+    nlohmann::json json;
+    json["action"] = item.action;
+    json["target"] = toJson(item.target);
+    json["args"] = toJson(item.args);
+    json["command_id"] = item.commandId;
+    return json;
 }
 
-OC::OpenC2Message& OC::OpenC2Message::setTarget(const Target &target)
+template<>
+OC::OpenC2Message OC::JSON::fromJson<>(std::string_view json)
 {
-    this->target = target;
-}
+    nlohmann::json result = nlohmann::json::parse(json);
 
-OC::OpenC2Message& OC::OpenC2Message::setArgs(const Args &args)
-{
-    this->args = args;
-}
-
-OC::OpenC2Message& OC::OpenC2Message::setCommandId(std::string_view commandId)
-{
-    this->commandId = commandId;
+    OpenC2Message message;
+    message.action = result["action"].get<std::string>();
+    message.target = fromJson<Target>(result["target"].get<std::string>());
+    message.args = fromJson<Args>(result["args"].get<std::string>());
+    message.commandId = result["command_id"].get<std::string>();
 }

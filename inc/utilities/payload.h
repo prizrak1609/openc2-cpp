@@ -1,7 +1,8 @@
 #pragma once
 
 #include <string>
-#include <json_dto/pub.hpp>
+
+#include "Json.h"
 
 namespace OC {
 
@@ -10,14 +11,12 @@ namespace OC {
             std::string bin;
     };
 
-}
+    namespace JSON {
+        template<>
+        std::string toJson(const Payload& item);
 
-namespace json_dto {
-
-    template<typename Json_Io>
-    void json_io(Json_Io &io, OC::Payload &payload) {
-        io & json_dto::mandatory("url", payload.url)
-                & json_dto::optional("bin", payload.bin, {});
+        template<>
+        Payload fromJson(std::string json);
     }
 
 }

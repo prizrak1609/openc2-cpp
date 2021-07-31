@@ -1,5 +1,7 @@
 #include "args.h"
 
+using namespace OC;
+
 void OC::Args::addStart(std::time_t startTime)
 {
     this->startTime = startTime;
@@ -47,4 +49,28 @@ void OC::Args::addDuration(std::time_t duration)
     this->startTime = now;
     this->stopTime = now + duration;
     this->duration = duration;
+}
+
+template<>
+std::string OC::JSON::toJson<>(const Args& item)
+{
+    nlohmann::json json;
+    json["start_time"] = item.startTime;
+    json["stop_time"] = item.stopTime;
+    json["response_requested"] = item.responseRequested;
+    json["duration"] = item.duration;
+    return json;
+}
+
+template<>
+OC::Args OC::JSON::fromJson<>(std::string_view json)
+{
+    nlohmann::json result = nlohmann::json::parse(json);
+
+    Args args;
+    args.startTime = result["start_time"].get<time_t>();
+    args.stopTime = result["stop_time"].get<time_t>();
+    args.responseRequested = result["response_requested"].get<std::string>();
+    args.duration = result["duration"].get<time_t>();
+    return args;
 }
