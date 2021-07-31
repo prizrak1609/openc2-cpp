@@ -1,25 +1,34 @@
 #include "jsonformatter.h"
-#include "Json.h"
+#include <nlohmann/json.hpp>
 
 using namespace OC;
-using namespace JSON;
 
 OC::OpenC2Message OC::JsonFormatter::readOpenC2Message(const std::string &json)
 {
-    return fromJson<OpenC2Message>(json);
+    OpenC2Message message;
+    nlohmann::json jsonObj = nlohmann::json::parse(json);
+    jsonObj.get_to(message);
+
+    return message;
 }
 
 std::string OC::JsonFormatter::getJson(const OpenC2Message &message, bool prettyPrint)
 {
-    return toJson(message);
+    nlohmann::json obj = message;
+    return obj.dump(4);
 }
 
 OC::OpenC2Response OC::JsonFormatter::readOpenC2Response(const std::string &json)
 {
-    return fromJson<OpenC2Response>(json);
+    OpenC2Response message;
+    nlohmann::json jsonObj = nlohmann::json::parse(json);
+    jsonObj.get_to(message);
+
+    return message;
 }
 
 std::string OC::JsonFormatter::getJson(OpenC2Response message, bool prettyPrint)
 {
-    return toJson(message);
+    nlohmann::json obj = message;
+    return obj.dump(4);
 }

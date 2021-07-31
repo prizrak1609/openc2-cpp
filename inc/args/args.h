@@ -12,7 +12,7 @@ namespace OC {
             std::time_t startTime = -1L;
             std::time_t stopTime = -1L;
             std::time_t duration = -1L;
-            std::string responseRequested = ArgsResponseType.COMPLETE;
+            std::string responseRequested = ArgsResponseType::COMPLETE;
 
             void addStart(std::time_t startTime);
             void addStartStop(std::time_t startTime, std::time_t stopTime);

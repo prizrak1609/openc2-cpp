@@ -1,7 +1,6 @@
 #include "artifact.h"
 
 using namespace OC;
-using namespace JSON;
 
 static const std::string MD5_PATTERN = "^[A-F0-9]{32}$";
 static const std::string SHA1_PATTERN = "^[A-F0-9]{40}$";

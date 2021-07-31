@@ -2,7 +2,7 @@
 
 using namespace OC;
 
-OpenC2Response& OpenC2Response::addResults(const std::string &key, std::any value) {
+OpenC2Response& OpenC2Response::addResults(const std::string &key, const nlohmann::json &value) {
     results.emplace(key, value);
     return *this;
 }
@@ -14,11 +14,7 @@ void to_json(nlohmann::json &json, const OpenC2Response &item)
         json["status_text"] = item.statusText;
     }
     if (!item.results.empty()) {
-        nlohmann::json results;
-        for (const auto &pair : item.results) {
-            results[pair.first] = pair.second;
-        }
-        json["results"] = results;
+        json["results"] = item.results;
     }
 }
 
