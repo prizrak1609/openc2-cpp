@@ -13,6 +13,7 @@ find_package(RapidJSON REQUIRED)
 include_directories(${json-dto_INCLUDES}
     ${RapidJSON_INCLUDES}
     inc/actuators
+    inc/args
     inc
     )
 
@@ -20,4 +21,5 @@ add_library(OpenC2cpp STATIC
             src/openc2response.cpp
             src/openc2message.cpp
             src/actuators/actuatortype.cpp
+            src/args/args.cpp
             )

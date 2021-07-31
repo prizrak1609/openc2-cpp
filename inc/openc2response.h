@@ -12,6 +12,8 @@ namespace OC {
             unsigned int status = 0;
             std::string statusText;
             std::unordered_map<std::string, std::any> results;
+
+            OpenC2Response& addResults(const std::string &key, std::any value);
     };
 
 }
