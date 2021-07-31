@@ -14,6 +14,8 @@ include_directories(${json-dto_INCLUDES}
     ${RapidJSON_INCLUDES}
     inc/actuators
     inc/args
+    inc/interfaces
+    inc/json
     inc
     )
 
@@ -22,4 +24,6 @@ add_library(OpenC2cpp STATIC
             src/openc2message.cpp
             src/actuators/actuatortype.cpp
             src/args/args.cpp
+            src/interfaces/validation.cpp
+            src/json/jsonformatter.cpp
             )
