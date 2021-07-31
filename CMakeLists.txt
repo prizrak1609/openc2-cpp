@@ -30,4 +30,5 @@ add_library(OpenC2cpp STATIC
             src/targets/artifact.cpp
             src/targets/device.cpp
             src/targets/domainname.cpp
+            src/targets/emailaddress.cpp
             )
