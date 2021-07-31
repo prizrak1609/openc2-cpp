@@ -49,4 +49,5 @@ add_library(OpenC2cpp STATIC
             src/types/actiontype.cpp
             src/types/argsresponsetype.cpp
             src/types/featuretype.cpp
+            src/types/hashtype.cpp
             )
