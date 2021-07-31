@@ -12,12 +12,12 @@ find_package(RapidJSON REQUIRED)
 
 include_directories(${json-dto_INCLUDES}
     ${RapidJSON_INCLUDES}
-    inc/response
-    inc/message
+    inc/actuators
     inc
     )
 
 add_library(OpenC2cpp STATIC
-            src/response/openc2response.cpp
-            src/message/openc2message.cpp
+            src/openc2response.cpp
+            src/openc2message.cpp
+            src/actuators/actuatortype.cpp
             )
