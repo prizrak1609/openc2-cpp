@@ -28,4 +28,5 @@ add_library(OpenC2cpp STATIC
             src/json/jsonformatter.cpp
             src/utilities/payload.cpp
             src/targets/artifact.cpp
+            src/targets/device.cpp
             )
