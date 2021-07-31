@@ -43,6 +43,8 @@ namespace OC {
               * @return String containing the JSON representation of the object
               */
             static std::string getJson(const OpenC2Response& message, bool prettyPrint);
+
+            static std::string removePrettyFormatting(std::string_view text);
     };
 
 }

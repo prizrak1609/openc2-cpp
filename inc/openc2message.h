@@ -11,8 +11,8 @@ namespace OC {
 
     struct OpenC2Message {
             std::string action;
-            Target target;
-            Args args;
+            Target *target = nullptr;
+            Args *args = nullptr;
             std::string commandId;
     };
 

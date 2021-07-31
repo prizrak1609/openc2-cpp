@@ -12,7 +12,17 @@ class TestResponse : public ::testing::Test {
 };
 
 TEST_F(TestResponse, OpenC2Response_convert_to_JSON) {
-    std::string expected = R"===({"results":{"tags":["Tag1","Tag2","Tag3","Tag4","Tag5"],"version":"1.0"},"status":404,"status_text":"Couldn't find what you want"})===";
+    std::string expected = R"===(
+{
+  "results":{
+    "tags":[
+      "Tag1","Tag2","Tag3","Tag4","Tag5"
+    ],
+    "version":"1.0"
+  },
+  "status":404,
+  "status_text":"Couldn't find what you want"
+})===";
 
     OpenC2Response response;
     std::string tags[] = {"Tag1", "Tag2","Tag3","Tag4","Tag5"};
@@ -24,7 +34,7 @@ TEST_F(TestResponse, OpenC2Response_convert_to_JSON) {
 
     std::cout << JsonFormatter::getJson(response, true) << std::endl;
 
-    ASSERT_EQ(expected, JsonFormatter::getJson(response, false));
+    ASSERT_EQ(JsonFormatter::removePrettyFormatting(expected), JsonFormatter::getJson(response, false));
 }
 
 TEST_F(TestResponse, OpenC2Response_convert_from_JSON) {

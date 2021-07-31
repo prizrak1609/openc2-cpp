@@ -13,7 +13,7 @@ namespace OC {
         int pid;
         std::string name;
         std::string cwd;
-        File executable;
+        File* executable;
         Process* parent;
         std::string commandLine;
     };

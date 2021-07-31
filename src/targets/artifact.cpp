@@ -44,14 +44,14 @@ bool OC::Artifact::isValid()
 
 void OC::to_json(nlohmann::json &json, const Artifact &item)
 {
-    json["mimeType"] = item.mimeType;
+    json["mime_type"] = item.mimeType;
     json["payload"] = item.payload;
     json["hashes"] = item.hashes;
 }
 
 void OC::from_json(const nlohmann::json &result, Artifact &artifact)
 {
-    artifact.mimeType = result["mimeType"].get<std::string>();
+    artifact.mimeType = result["mime_type"].get<std::string>();
     artifact.payload = result["payload"].get<Payload>();
     artifact.hashes = result["hashes"].get<std::unordered_map<std::string, std::string>>();
 }

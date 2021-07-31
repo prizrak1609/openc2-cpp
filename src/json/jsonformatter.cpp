@@ -40,3 +40,9 @@ std::string OC::JsonFormatter::getJson(const OpenC2Response &message, bool prett
         return obj.dump();
     }
 }
+
+std::string JsonFormatter::removePrettyFormatting(std::string_view text)
+{
+    nlohmann::json result = nlohmann::json::parse(text);
+    return result.dump();
+}

@@ -63,6 +63,7 @@ add_library(OpenC2cpp STATIC
 
 add_executable(runUnitTests
     tests/testResponse.cpp
+    tests/OpenC2MessageTest.cpp
 )
 
 target_link_libraries(runUnitTests ${GTest_LIBS} OpenC2cpp)

@@ -4,12 +4,20 @@ using namespace OC;
 
 void OC::to_json(nlohmann::json &json, const Payload &item)
 {
-    json["bin"] = item.bin;
-    json["url"] = item.url;
+    if (!item.bin.empty()) {
+        json["bin"] = item.bin;
+    }
+    if (!item.url.empty()) {
+        json["url"] = item.url;
+    }
 }
 
 void OC::from_json(const nlohmann::json &result, Payload &payload)
 {
-    payload.bin = result["bin"].get<std::string>();
-    payload.url = result["url"].get<std::string>();
+    if (result.contains("bin")) {
+        payload.bin = result["bin"].get<std::string>();
+    }
+    if (result.contains("url")) {
+        payload.url = result["url"].get<std::string>();
+    }
 }
