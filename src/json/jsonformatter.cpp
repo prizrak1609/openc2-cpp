@@ -15,7 +15,11 @@ OC::OpenC2Message OC::JsonFormatter::readOpenC2Message(const std::string &json)
 std::string OC::JsonFormatter::getJson(const OpenC2Message &message, bool prettyPrint)
 {
     nlohmann::json obj = message;
-    return obj.dump(4);
+    if (prettyPrint) {
+        return obj.dump(4);
+    } else {
+        return obj.dump();
+    }
 }
 
 OC::OpenC2Response OC::JsonFormatter::readOpenC2Response(const std::string &json)
@@ -27,8 +31,12 @@ OC::OpenC2Response OC::JsonFormatter::readOpenC2Response(const std::string &json
     return message;
 }
 
-std::string OC::JsonFormatter::getJson(OpenC2Response message, bool prettyPrint)
+std::string OC::JsonFormatter::getJson(const OpenC2Response &message, bool prettyPrint)
 {
     nlohmann::json obj = message;
-    return obj.dump(4);
+    if (prettyPrint) {
+        return obj.dump(4);
+    } else {
+        return obj.dump();
+    }
 }

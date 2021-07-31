@@ -4,8 +4,8 @@
 #include <string_view>
 #include <nlohmann/json.hpp>
 
-#include "Target.h"
-#include "Args.h"
+#include "target.h"
+#include "args.h"
 
 namespace OC {
 

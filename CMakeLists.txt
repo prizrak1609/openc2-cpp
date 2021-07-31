@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.14)
 
 project(OpenC2cpp LANGUAGES CXX)
 
@@ -6,10 +6,17 @@ include(${CMAKE_BINARY_DIR}/conan-dependencies/conan_paths.cmake)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+enable_testing()
 
 find_package(jsonformoderncpp REQUIRED)
+find_package(GTest REQUIRED)
 
 include_directories(${jsonformoderncpp_INCLUDES}
+    ${GTest_INCLUDES}
+    ${gtest_SOURCE_DIR}/include
+    ${gtest_SOURCE_DIR}
     inc/actuators
     inc/args
     inc/interfaces
@@ -53,3 +60,11 @@ add_library(OpenC2cpp STATIC
             src/types/l4protocoltype.cpp
             src/types/statuscodetype.cpp
             )
+
+add_executable(runUnitTests
+    tests/testResponse.cpp
+)
+
+target_link_libraries(runUnitTests ${GTest_LIBS} OpenC2cpp)
+
+add_test(runUnitTests runUnitTests)

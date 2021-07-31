@@ -42,7 +42,7 @@ namespace OC {
               * @param prettyPrint boolean to toggle if the return string is in human readable or not
               * @return String containing the JSON representation of the object
               */
-            static std::string getJson(OpenC2Response message, bool prettyPrint);
+            static std::string getJson(const OpenC2Response& message, bool prettyPrint);
     };
 
 }

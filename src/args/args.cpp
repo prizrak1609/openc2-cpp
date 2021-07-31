@@ -59,7 +59,7 @@ void OC::to_json(nlohmann::json &json, const Args &item)
     json["duration"] = item.duration;
 }
 
-void from_json(const nlohmann::json &result, Args &args)
+void OC::from_json(const nlohmann::json &result, Args &args)
 {
     args.startTime = result["start_time"].get<time_t>();
     args.stopTime = result["stop_time"].get<time_t>();

@@ -2,7 +2,7 @@
 
 using namespace OC;
 
-void to_json(nlohmann::json &json, const OpenC2Message &item)
+void OC::to_json(nlohmann::json &json, const OpenC2Message &item)
 {
     json["action"] = item.action;
     json["target"] = item.target;
@@ -10,7 +10,7 @@ void to_json(nlohmann::json &json, const OpenC2Message &item)
     json["command_id"] = item.commandId;
 }
 
-void from_json(const nlohmann::json &result, OpenC2Message &message)
+void OC::from_json(const nlohmann::json &result, OpenC2Message &message)
 {
     message.action = result["action"].get<std::string>();
     message.target = result["target"].get<Target>();

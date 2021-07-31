@@ -1,5 +1,6 @@
 [requires]
 jsonformoderncpp/3.7.0
+gtest/cci.20210126
 
 [generators]
 cmake_find_package

@@ -2,14 +2,14 @@
 
 using namespace OC;
 
-void to_json(nlohmann::json &json, const Device &item)
+void OC::to_json(nlohmann::json &json, const Device &item)
 {
     json["hostname"] = item.hostname;
     json["idn_hostname"] = item.idnHostname;
     json["device_id"] = item.deviceId;
 }
 
-void from_json(const nlohmann::json &result, Device &device)
+void OC::from_json(const nlohmann::json &result, Device &device)
 {
     device.deviceId = result["device_id"].get<std::string>();
     device.idnHostname = result["idn_hostname"].get<std::string>();
