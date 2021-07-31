@@ -35,4 +35,5 @@ add_library(OpenC2cpp STATIC
             src/targets/file.cpp
             src/targets/idndomainname.cpp
             src/targets/idnemailaddress.cpp
+            src/targets/ipv4connection.cpp
             )
