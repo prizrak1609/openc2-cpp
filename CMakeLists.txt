@@ -51,4 +51,5 @@ add_library(OpenC2cpp STATIC
             src/types/featuretype.cpp
             src/types/hashtype.cpp
             src/types/l4protocoltype.cpp
+            src/types/statuscodetype.cpp
             )
