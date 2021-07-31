@@ -7,10 +7,8 @@ OpenC2Response& OpenC2Response::addResults(const std::string &key, std::any valu
     return *this;
 }
 
-template<>
-std::string JSON::toJson<>(const OpenC2Response& item)
+void to_json(nlohmann::json &json, const OpenC2Response &item)
 {
-    nlohmann::json json;
     json["status"] = item.status;
     if (!item.statusText.empty()) {
         json["status_text"] = item.statusText;
@@ -18,20 +16,14 @@ std::string JSON::toJson<>(const OpenC2Response& item)
     if (!item.results.empty()) {
         nlohmann::json results;
         for (const auto &pair : item.results) {
-            results[pair.first] = toJson(pair.second);
+            results[pair.first] = pair.second;
         }
         json["results"] = results;
     }
-
-    return json;
 }
 
-template<>
-OpenC2Response JSON::fromJson<>(std::string_view json)
+void from_json(const nlohmann::json &result, OpenC2Response &response)
 {
-    nlohmann::json result = nlohmann::json::parse(json);
-
-    OpenC2Response response;
     response.status = result["status"];
     if (result.contains("status_text")) {
         response.statusText = result["status_text"].get<std::string>();
@@ -41,5 +33,4 @@ OpenC2Response JSON::fromJson<>(std::string_view json)
             response.addResults(key, value);
         }
     }
-    return response;
 }

@@ -7,29 +7,6 @@ static const std::string MD5_PATTERN = "^[A-F0-9]{32}$";
 static const std::string SHA1_PATTERN = "^[A-F0-9]{40}$";
 static const std::string SHA256_PATTERN = "^[A-F0-9]{64}$";
 
-template<>
-std::string OC::JSON::toJson<>(const Artifact& item)
-{
-    nlohmann::json json;
-    json["mimeType"] = item.mimeType;
-    json["payload"] = toJson(item.payload);
-    json["hashes"] = item.hashes;
-    return json;
-}
-
-template<>
-OC::Artifact OC::JSON::fromJson<>(std::string_view json)
-{
-    nlohmann::json result = nlohmann::json::parse(json);
-
-    Artifact artifact;
-    artifact.mimeType = result["mimeType"].get<std::string>();
-    artifact.payload = fromJson<Payload>(result["payload"].get<std::string>());
-    artifact.hashes = result["hashes"].get<std::unordered_map<std::string, std::string>>();
-
-    return artifact;
-}
-
 OC::Artifact& OC::Artifact::addHashes(std::string_view key, std::string_view hash, bool& error)
 {
     error = false;
@@ -64,4 +41,18 @@ bool OC::Artifact::isValid()
     }
 
     return true;
+}
+
+void to_json(nlohmann::json &json, const Artifact &item)
+{
+    json["mimeType"] = item.mimeType;
+    json["payload"] = item.payload;
+    json["hashes"] = item.hashes;
+}
+
+void from_json(const nlohmann::json &result, Artifact &artifact)
+{
+    artifact.mimeType = result["mimeType"].get<std::string>();
+    artifact.payload = result["payload"].get<Payload>();
+    artifact.hashes = result["hashes"].get<std::unordered_map<std::string, std::string>>();
 }

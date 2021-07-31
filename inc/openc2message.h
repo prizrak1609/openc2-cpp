@@ -2,10 +2,10 @@
 
 #include <string>
 #include <string_view>
+#include <nlohmann/json.hpp>
 
 #include "Target.h"
 #include "Args.h"
-#include "Json.h"
 
 namespace OC {
 
@@ -15,13 +15,5 @@ namespace OC {
             Args args;
             std::string commandId;
     };
-
-    namespace JSON {
-        template<>
-        std::string toJson(const OpenC2Message& item);
-
-        template<>
-        OpenC2Message fromJson(std::string_view json);
-    }
 
 }

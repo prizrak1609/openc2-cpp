@@ -2,8 +2,7 @@
 
 #include <string>
 #include <string_view>
-
-#include "Json.h"
+#include <nlohmann/json.hpp>
 
 namespace OC {
 
@@ -15,13 +14,5 @@ namespace OC {
         int dstPort;
         std::string protocol;
     };
-
-    namespace JSON {
-        template<>
-        std::string toJson(const Ipv6Connection& item);
-
-        template<>
-        Ipv6Connection fromJson(std::string_view json);
-    }
 
 }

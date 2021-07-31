@@ -2,9 +2,9 @@
 
 #include <string>
 #include <unordered_map>
+#include <nlohmann/json.hpp>
 
 #include "payload.h"
-#include "Json.h"
 #include "validation.h"
 
 namespace OC {
@@ -23,13 +23,5 @@ namespace OC {
 
             bool isValid();
     };
-
-    namespace JSON {
-        template<>
-        std::string toJson(const Artifact& item);
-
-        template<>
-        Artifact fromJson(std::string_view json);
-    }
 
 }

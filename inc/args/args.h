@@ -2,9 +2,9 @@
 
 #include <string>
 #include <chrono>
+#include <nlohmann/json.hpp>
 
 #include "ArgsResponseType.h"
-#include "Json.h"
 
 namespace OC {
 
@@ -22,11 +22,7 @@ namespace OC {
             void addDuration(std::time_t duration);
     };
 
-    namespace JSON {
-        template<>
-        std::string toJson(const Args& item);
+    void to_json(nlohmann::json& j, const Args& p);
+    void from_json(const nlohmann::json& j, Args& p);
 
-        template<>
-        Args fromJson(std::string json);
-    }
 }

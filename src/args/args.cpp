@@ -51,26 +51,18 @@ void OC::Args::addDuration(std::time_t duration)
     this->duration = duration;
 }
 
-template<>
-std::string OC::JSON::toJson<>(const Args& item)
+void OC::to_json(nlohmann::json &json, const Args &item)
 {
-    nlohmann::json json;
     json["start_time"] = item.startTime;
     json["stop_time"] = item.stopTime;
     json["response_requested"] = item.responseRequested;
     json["duration"] = item.duration;
-    return json;
 }
 
-template<>
-OC::Args OC::JSON::fromJson<>(std::string_view json)
+void from_json(const nlohmann::json &result, Args &args)
 {
-    nlohmann::json result = nlohmann::json::parse(json);
-
-    Args args;
     args.startTime = result["start_time"].get<time_t>();
     args.stopTime = result["stop_time"].get<time_t>();
     args.responseRequested = result["response_requested"].get<std::string>();
     args.duration = result["duration"].get<time_t>();
-    return args;
 }

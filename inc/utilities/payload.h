@@ -1,8 +1,8 @@
 #pragma once
 
 #include <string>
-
-#include "Json.h"
+#include <string_view>
+#include <nlohmann/json.hpp>
 
 namespace OC {
 
@@ -10,13 +10,5 @@ namespace OC {
             std::string url;
             std::string bin;
     };
-
-    namespace JSON {
-        template<>
-        std::string toJson(const Payload& item);
-
-        template<>
-        Payload fromJson(std::string json);
-    }
 
 }

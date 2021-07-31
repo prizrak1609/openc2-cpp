@@ -4,8 +4,7 @@
 #include <any>
 #include <string>
 #include <string_view>
-
-#include "Json.h"
+#include <nlohmann/json.hpp>
 
 namespace OC {
 
@@ -17,12 +16,7 @@ namespace OC {
             OpenC2Response& addResults(const std::string &key, std::any value);
     };
 
-    namespace JSON {
-        template<>
-        std::string toJson(const OpenC2Response& item);
-
-        template<>
-        OpenC2Response fromJson(std::string_view json);
-    }
+    void to_json(nlohmann::json& j, const OpenC2Response& p);
+    void from_json(const nlohmann::json& j, OpenC2Response& p);
 
 }

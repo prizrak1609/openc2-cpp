@@ -2,21 +2,12 @@
 
 using namespace OC;
 
-template<>
-std::string OC::JSON::toJson<>(const DomainName &item)
+void to_json(nlohmann::json &json, const DomainName &item)
 {
-    nlohmann::json json;
     json["domain_name"] = item.domainName;
-
-    return json;
 }
 
-template<>
-OC::DomainName OC::JSON::fromJson<>(std::string_view json)
+void from_json(const nlohmann::json &result, DomainName &domainName)
 {
-    nlohmann::json result = nlohmann::json::parse(json);
-
-    DomainName domainName;
     domainName.domainName = result["domain_name"].get<std::string>();
-    return domainName;
 }

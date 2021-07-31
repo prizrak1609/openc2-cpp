@@ -1,19 +1,11 @@
 #include "ipv4net.h"
 
-template<>
-std::string OC::JSON::toJson<>(const Ipv4Net &item)
+void OC::to_json(nlohmann::json &json, const Ipv4Net &item)
 {
-    nlohmann::json json;
     json["ipv4_net"] = item.ipv4Net;
-    return json;
 }
 
-template<>
-OC::Ipv4Net OC::JSON::fromJson<>(std::string_view json)
+void OC::from_json(const nlohmann::json &result, Ipv4Net &object)
 {
-    nlohmann::json result = nlohmann::json::parse(json);
-
-    Ipv4Net object;
     result["ipv4_net"].get_to(object.ipv4Net);
-    return object;
 }

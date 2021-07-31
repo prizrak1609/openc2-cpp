@@ -2,20 +2,12 @@
 
 using namespace OC;
 
-template<>
-std::string OC::JSON::toJson<>(const Features &item)
+void to_json(nlohmann::json &json, const Features &item)
 {
-    nlohmann::json json;
     json["features"] = item.features;
-    return json;
 }
 
-template<>
-OC::Features OC::JSON::fromJson<>(std::string_view json)
+void from_json(const nlohmann::json &result, Features &features)
 {
-    nlohmann::json result = nlohmann::json::parse(json);
-
-    Features features;
     features.features = result["features"].get<std::vector<std::string>>();
-    return features;
 }

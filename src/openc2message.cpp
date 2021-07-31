@@ -2,25 +2,18 @@
 
 using namespace OC;
 
-template<>
-std::string OC::JSON::toJson<>(const OpenC2Message& item)
+void to_json(nlohmann::json &json, const OpenC2Message &item)
 {
-    nlohmann::json json;
     json["action"] = item.action;
     json["target"] = toJson(item.target);
-    json["args"] = toJson(item.args);
+    json["args"] = item.args;
     json["command_id"] = item.commandId;
-    return json;
 }
 
-template<>
-OC::OpenC2Message OC::JSON::fromJson<>(std::string_view json)
+void from_json(const nlohmann::json &result, OpenC2Message &message)
 {
-    nlohmann::json result = nlohmann::json::parse(json);
-
-    OpenC2Message message;
     message.action = result["action"].get<std::string>();
-    message.target = fromJson<Target>(result["target"].get<std::string>());
-    message.args = fromJson<Args>(result["args"].get<std::string>());
+    message.target = result["target"].get<Target>());
+    message.args = result["args"].get<Args>();
     message.commandId = result["command_id"].get<std::string>();
 }
