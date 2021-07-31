@@ -16,6 +16,7 @@ include_directories(${jsonformoderncpp_INCLUDES}
     inc/json
     inc/utilities
     inc/targets
+    inc/types
     inc
     )
 
@@ -45,4 +46,5 @@ add_library(OpenC2cpp STATIC
             src/targets/properties.cpp
             src/targets/uri.cpp
             src/targets/target.cpp
+            src/types/actiontype.cpp
             )
