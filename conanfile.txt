@@ -1,0 +1,5 @@
+[requires]
+json_dto/0.2.13
+
+[generators]
+cmake_find_package
