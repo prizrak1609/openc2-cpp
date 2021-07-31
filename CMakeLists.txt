@@ -44,4 +44,5 @@ add_library(OpenC2cpp STATIC
             src/targets/process.cpp
             src/targets/properties.cpp
             src/targets/uri.cpp
+            src/targets/target.cpp
             )

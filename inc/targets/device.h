@@ -12,4 +12,7 @@ namespace OC {
             std::string deviceId;
     };
 
+    void to_json(nlohmann::json& j, const Device& p);
+    void from_json(const nlohmann::json& j, Device& p);
+
 }
