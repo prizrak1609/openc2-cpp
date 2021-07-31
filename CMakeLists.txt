@@ -16,6 +16,7 @@ include_directories(${json-dto_INCLUDES}
     inc/args
     inc/interfaces
     inc/json
+    inc/utilities
     inc
     )
 
@@ -26,4 +27,5 @@ add_library(OpenC2cpp STATIC
             src/args/args.cpp
             src/interfaces/validation.cpp
             src/json/jsonformatter.cpp
+            src/utilities/payload.cpp
             )
