@@ -40,4 +40,5 @@ add_library(OpenC2cpp STATIC
             src/targets/ipv6connection.cpp
             src/targets/ipv6net.cpp
             src/targets/iri.cpp
+            src/targets/macaddress.cpp
             )
