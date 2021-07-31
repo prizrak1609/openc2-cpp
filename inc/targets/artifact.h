@@ -24,4 +24,7 @@ namespace OC {
             bool isValid();
     };
 
+    void to_json(nlohmann::json& j, const Artifact& p);
+    void from_json(const nlohmann::json& j, Artifact& p);
+
 }

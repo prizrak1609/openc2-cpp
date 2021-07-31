@@ -2,8 +2,7 @@
 
 #include <string>
 #include <string_view>
-
-#include "Json.h"
+#include <nlohmann/json.hpp>
 
 namespace OC {
 
@@ -12,12 +11,7 @@ namespace OC {
         std::string idnDomainName;
     };
 
-    namespace JSON {
-        template<>
-        std::string toJson(const IdnDomainName& item);
-
-        template<>
-        IdnDomainName fromJson(std::string_view json);
-    }
+    void to_json(nlohmann::json& j, const IdnDomainName& p);
+    void from_json(const nlohmann::json& j, IdnDomainName& p);
 
 }

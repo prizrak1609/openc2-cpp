@@ -2,8 +2,7 @@
 
 #include <string>
 #include <string_view>
-
-#include "Json.h"
+#include <nlohmann/json.hpp>
 
 namespace OC {
 
@@ -16,13 +15,8 @@ namespace OC {
         std::string protocol;
     };
 
-    namespace JSON {
-        template<>
-        std::string toJson(const Ipv4Connection& item);
-
-        template<>
-        Ipv4Connection fromJson(std::string_view json);
-    }
+    void to_json(nlohmann::json& j, const Ipv4Connection& p);
+    void from_json(const nlohmann::json& j, Ipv4Connection& p);
 
 }
 

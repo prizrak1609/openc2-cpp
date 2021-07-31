@@ -16,4 +16,7 @@ namespace OC {
             std::string commandId;
     };
 
+    void to_json(nlohmann::json& j, const OpenC2Message& p);
+    void from_json(const nlohmann::json& j, OpenC2Message& p);
+
 }

@@ -15,4 +15,7 @@ namespace OC {
         std::string protocol;
     };
 
+    void to_json(nlohmann::json& j, const Ipv6Connection& p);
+    void from_json(const nlohmann::json& j, Ipv6Connection& p);
+
 }

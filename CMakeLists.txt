@@ -42,4 +42,5 @@ add_library(OpenC2cpp STATIC
             src/targets/iri.cpp
             src/targets/macaddress.cpp
             src/targets/process.cpp
+            src/targets/properties.cpp
             )

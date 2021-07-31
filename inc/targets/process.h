@@ -18,4 +18,7 @@ namespace OC {
         std::string commandLine;
     };
 
+    void to_json(nlohmann::json& j, const Process& p);
+    void from_json(const nlohmann::json& j, Process& p);
+
 }

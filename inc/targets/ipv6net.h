@@ -11,4 +11,7 @@ namespace OC {
         std::string ipv6Net;
     };
 
+    void to_json(nlohmann::json& j, const Ipv6Net& p);
+    void from_json(const nlohmann::json& j, Ipv6Net& p);
+
 }

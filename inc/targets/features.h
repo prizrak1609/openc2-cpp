@@ -12,4 +12,7 @@ namespace OC {
         std::vector<std::string> features;
     };
 
+    void to_json(nlohmann::json& j, const Features& p);
+    void from_json(const nlohmann::json& j, Features& p);
+
 }

@@ -11,4 +11,7 @@ namespace OC {
         std::string idnEmailAddress;
     };
 
+    void to_json(nlohmann::json& j, const IdnEmailAddress& p);
+    void from_json(const nlohmann::json& j, IdnEmailAddress& p);
+
 }
