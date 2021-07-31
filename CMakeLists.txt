@@ -29,4 +29,5 @@ add_library(OpenC2cpp STATIC
             src/utilities/payload.cpp
             src/targets/artifact.cpp
             src/targets/device.cpp
+            src/targets/domainname.cpp
             )

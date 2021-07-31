@@ -15,10 +15,10 @@ namespace OC {
 
     namespace JSON {
         template<>
-        std::string toJson<>(const Device& item);
+        std::string toJson(const Device& item);
 
         template<>
-        Device fromJson<>(std::string_view json);
+        Device fromJson(std::string_view json);
     }
 
 }

@@ -21,7 +21,7 @@ namespace OC {
         std::string toJson(const OpenC2Message& item);
 
         template<>
-        OpenC2Message fromJson(std::string json);
+        OpenC2Message fromJson(std::string_view json);
     }
 
 }
